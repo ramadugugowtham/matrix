@@ -3,29 +3,83 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Matrix Explorer</title>
+    <title>Matrix Explorer & Properties</title>
     <link rel="stylesheet" href="style.css">
 </head>
 <body>
 
     <header>
-        <h1>Matrix Explorer</h1>
-        <p>Click any matrix type below to visualize its properties interactively.</p>
+        <h1>Matrix Knowledge Hub</h1>
+        <p>Master matrix classifications and fundamental algebraic properties interactively.</p>
     </header>
 
-    <div class="search-container">
-        <input type="text" id="searchBar" placeholder="Search matrices (e.g., Identity, Diagonal)...">
+    <div class="tab-navigation">
+        <button class="tab-btn active" onclick="switchTab('explorerTab')">Matrix Types Explorer</button>
+        <button class="tab-btn" onclick="switchTab('propertiesTab')">Matrix Properties</button>
     </div>
 
-    <div class="visualizer-container">
-        <div class="visualizer-title" id="activeTitle">Select a matrix below to preview</div>
-        <div class="matrix-display" id="matrixVisualizer">
+    <div id="explorerTab" class="tab-content active">
+        <div class="search-container">
+            <input type="text" id="searchBar" placeholder="Search matrices (e.g., Identity, Diagonal)...">
+        </div>
+
+        <div class="visualizer-container">
+            <div class="visualizer-title" id="activeTitle">Select a matrix below to preview</div>
+            <div class="matrix-display" id="matrixVisualizer"></div>
+            <p id="activeDescription" class="active-desc"></p>
+        </div>
+
+        <div class="matrix-grid" id="matrixGrid"></div>
+    </div>
+
+    <div id="propertiesTab" class="tab-content">
+        <div class="properties-container">
+            
+            <div class="property-card">
+                <h3>1. Commutative Property</h3>
+                <p><strong>Addition:</strong> Matrix addition <em>is</em> commutative. If you add two matrices of the same dimension, the order does not matter.</p>
+                <blockquote>$A + B = B + A$</blockquote>
+                <p><strong>Multiplication:</strong> Matrix multiplication <em>is generally NOT</em> commutative. Changing the order changes the result entirely (or makes it impossible due to dimension mismatches).</p>
+                <blockquote>$A \cdot B \neq B \cdot A$</blockquote>
             </div>
-        <p id="activeDescription" class="active-desc"></p>
+
+            <div class="property-card">
+                <h3>2. Associative Property</h3>
+                <p>Both matrix addition and multiplication follow the associative laws, provided the matrix dimensions align correctly for operations.</p>
+                <blockquote>$(A + B) + C = A + (B + C)$</blockquote>
+                <blockquote>$(A \cdot B) \cdot C = A \cdot (B \cdot C)$</blockquote>
+            </div>
+
+            <div class="property-card">
+                <h3>3. Distributive Property</h3>
+                <p>Matrix multiplication distributes over matrix addition seamlessly.</p>
+                <blockquote>$A \cdot (B + C) = A \cdot B + A \cdot C$</blockquote>
+            </div>
+
+            <div class="property-card">
+                <h3>4. Transpose of a Matrix</h3>
+                <p>The transpose of a matrix $A$ (denoted as $A^T$ or $A'$) is formed by swapping its rows with its columns. If $A$ is an $m \times n$ matrix, $A^T$ becomes an $n \times m$ matrix.</p>
+                <blockquote>If $A = \begin{bmatrix} a & b \\ c & d \end{bmatrix}$, then $A^T = \begin{bmatrix} a & c \\ b & d \end{bmatrix}$</blockquote>
+            </div>
+
+            <div class="property-card">
+                <h3>5. Multiplication using Transpose</h3>
+                <p>When taking the transpose of a product of two or more matrices, the order of multiplication reverses. This is known as the <strong>Reversal Law</strong>.</p>
+                <blockquote>$(A \cdot B)^T = B^T \cdot A^T$</blockquote>
+                <p>For three matrices, it scales naturally: $(A \cdot B \cdot C)^T = C^T \cdot B^T \cdot A^T$.</p>
+            </div>
+
+        </div>
     </div>
 
-    <div class="matrix-grid" id="matrixGrid"></div>
-
+    <script>
+        window.MathJax = {
+            tex: {
+                inlineMath: [['$', '$'], ['\\(', '\\)']]
+            }
+        };
+    </script>
+    <script id="MathJax-script" async src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
     <script src="script.js"></script>
 </body>
 </html>
