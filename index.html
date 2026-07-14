@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Matrix Explorer</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+    <header>
+        <h1>Matrix Explorer</h1>
+        <p>Click any matrix type below to visualize its properties interactively.</p>
+    </header>
+
+    <div class="search-container">
+        <input type="text" id="searchBar" placeholder="Search matrices (e.g., Identity, Diagonal)...">
+    </div>
+
+    <div class="visualizer-container">
+        <div class="visualizer-title" id="activeTitle">Select a matrix below to preview</div>
+        <div class="matrix-display" id="matrixVisualizer">
+            </div>
+        <p id="activeDescription" class="active-desc"></p>
+    </div>
+
+    <div class="matrix-grid" id="matrixGrid"></div>
+
+    <script src="script.js"></script>
+</body>
+</html>
