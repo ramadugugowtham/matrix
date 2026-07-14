@@ -44,7 +44,6 @@ function updateVisualizer(matrix) {
     const rows = matrix.example.length;
     const cols = matrix.example[0].length;
     
-    // Explicitly update grid column sizing based on the shape
     visualizer.style.gridTemplateColumns = `repeat(${cols}, 50px)`;
 
     for (let r = 0; r < rows; r++) {
@@ -65,6 +64,32 @@ function updateVisualizer(matrix) {
 searchBar.addEventListener('input', (e) => {
     const query = e.target.value.toLowerCase();
     const cards = document.querySelectorAll('.matrix-card');
+    
+    cards.forEach((card, index) => {
+        const match = matricesData[index].name.toLowerCase().includes(query) || 
+                      matricesData[index].desc.toLowerCase().includes(query);
+        card.classList.toggle('hidden', !match);
+    });
+});
+
+// Tab Switch System Engine
+function switchTab(tabId) {
+    // Hide all tab content
+    document.querySelectorAll('.tab-content').forEach(tab => {
+        tab.classList.remove('active');
+    });
+    // Remove active styling from buttons
+    document.querySelectorAll('.tab-btn').forEach(btn => {
+        btn.classList.remove('active');
+    });
+    
+    // Show chosen tab & target active button styling
+    document.getElementById(tabId).classList.add('active');
+    event.currentTarget.classList.add('active');
+}
+
+// Initialize dashboard with Identity Matrix displayed first
+updateVisualizer(matricesData[5]);    const cards = document.querySelectorAll('.matrix-card');
     
     cards.forEach((card, index) => {
         const match = matricesData[index].name.toLowerCase().includes(query) || 
