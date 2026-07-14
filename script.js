@@ -72,6 +72,32 @@ searchBar.addEventListener('input', (e) => {
     });
 });
 
+// Modern Tab Switch Engine
+document.querySelectorAll('.tab-btn').forEach(button => {
+    button.addEventListener('click', () => {
+        const targetTabId = button.getAttribute('data-target');
+
+        // 1. Reset all tabs and layout containers
+        document.querySelectorAll('.tab-content').forEach(tab => tab.classList.remove('active'));
+        document.querySelectorAll('.tab-btn').forEach(btn => btn.classList.remove('active'));
+
+        // 2. Activate the active choices
+        document.getElementById(targetTabId).classList.add('active');
+        button.classList.add('active');
+    });
+});
+
+// Initialize dashboard with Identity Matrix displayed first
+updateVisualizer(matricesData[5]);    const query = e.target.value.toLowerCase();
+    const cards = document.querySelectorAll('.matrix-card');
+    
+    cards.forEach((card, index) => {
+        const match = matricesData[index].name.toLowerCase().includes(query) || 
+                      matricesData[index].desc.toLowerCase().includes(query);
+        card.classList.toggle('hidden', !match);
+    });
+});
+
 // Tab Switch System Engine
 function switchTab(tabId) {
     // Hide all tab content
