@@ -33,7 +33,6 @@ matricesData.forEach(matrix => {
     card.innerHTML = `<h3>${matrix.name}</h3><p>${matrix.desc}</p>`;
     card.addEventListener('click', () => updateVisualizer(matrix));
     grid.appendChild(card);
-});
 
 // Update interactive workspace
 function updateVisualizer(matrix) {
@@ -69,7 +68,6 @@ searchBar.addEventListener('input', (e) => {
         const match = matricesData[index].name.toLowerCase().includes(query) || 
                       matricesData[index].desc.toLowerCase().includes(query);
         card.classList.toggle('hidden', !match);
-    });
 });
 
 // Modern Tab Switch Engine
@@ -88,14 +86,7 @@ document.querySelectorAll('.tab-btn').forEach(button => {
 });
 
 // Initialize dashboard with Identity Matrix displayed first
-updateVisualizer(matricesData[5]);    const query = e.target.value.toLowerCase();
-    const cards = document.querySelectorAll('.matrix-card');
-    
-    cards.forEach((card, index) => {
-        const match = matricesData[index].name.toLowerCase().includes(query) || 
-                      matricesData[index].desc.toLowerCase().includes(query);
-        card.classList.toggle('hidden', !match);
-    });
+updateVisualizer(matricesData[5]);
 });
 
 // Tab Switch System Engine
